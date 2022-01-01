@@ -21,5 +21,3 @@ mix.browserSync({
     proxy: 'student_administration.test',
     port: 3000
 });
-
-

@@ -24,3 +24,7 @@ Route::get('course','CourseController@index');
 Route::get('course/{id}','CourseController@show');
 Route::view('test','test.test');
 
+
+Auth::routes(['register' => false]);
+
+Route::get('/', 'HomeController@index')->name('home');

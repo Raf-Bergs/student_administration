@@ -8,7 +8,7 @@
     <p>List of students enrolled:</p>
     <ul>
     @foreach($students as $student)
-        <li>{{$student['student']->first_name}}</li>
+        <li>it brokey</li>
     @endforeach
     </ul>
 @endsection

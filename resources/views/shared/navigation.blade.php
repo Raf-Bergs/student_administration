@@ -12,16 +12,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/course">Courses</a>
                 </li>
+                @auth()
+                    @if(auth()->user()->admin)
+                        <li>
+                            <a class="nav-link" href="/programmes">programmes</a>
+                        </li>
+                    @endif
+                @endauth
             </ul>
-            {{--  Admin navigation  --}}
-            <ul class="navbar-nav ml-auto">
+            {{--  Auth navigation  --}}
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                </li>
+            @endguest
+            @auth
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown">Admin</a>
+                    <a class="nav-link dropdown-toggle text-light" href="#!" data-toggle="dropdown">
+                        {{ auth()->user()->name }} <span class="caret"></span>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="/admin/records">Records</a>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Logout</button>
+                        </form>
+                        @if(auth()->user()->admin)
+                        @endif
                     </div>
                 </li>
-            </ul>
+                @endauth            </ul>
         </div>
     </div>
 </nav>
