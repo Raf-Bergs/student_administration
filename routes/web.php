@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //single line notation
 Route::view('/','home');
 Route::get('course','CourseController@index');
-Route::get('course/{id}','CourseController@show');
+Route::get('course/{id}','CourseController@show')->middleware(['auth']);
 Route::view('test','test.test');
 
 
